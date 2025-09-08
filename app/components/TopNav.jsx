@@ -8,12 +8,21 @@ import { useSDK } from "@metamask/sdk-react"
 import Jazzicon from "react-jazzicon"
 import { ethers } from "ethers"
 
+// Redux
+import { useAppDispatch, useAppSelector } from "@/lib/hooks"
+import { setAccount, setBalance } from "@/lib/features/user/user"
+import {
+  selectAccount,
+  selectETHBalance,
+} from "@/lib/selectors"
+
 // Import hooks
 import { useProvider } from "@/app/hooks/useProvider"
 
 // Import assets
 import network from "@/app/assets/other/network.svg"
 
+// Import config
 import config from "@/app/config.json"
 
 function TopNav() {
@@ -21,8 +30,9 @@ function TopNav() {
   const { sdk, provider: metamask, chainId } = useSDK()
   const { provider } = useProvider()
 
-  const [account, setAccount] = useState("")
-  const [balance, setBalance] = useState("")
+  const dispatch = useAppDispatch()
+  const account = useAppSelector(selectAccount)
+  const balance = useAppSelector(selectETHBalance)
 
   async function connectHandler() {
     try {
@@ -35,9 +45,9 @@ function TopNav() {
 
   async function networkHandler(e) {
     await metamask.request({
-      method: "wallet_switchEthereumChain",
+      method: 'wallet_switchEthereumChain',
       params: [{ chainId: e.target.value }],
-    })
+    })    
   }
 
   async function getAccountInfo() {
@@ -46,15 +56,16 @@ function TopNav() {
     const balance = await provider.getBalance(account)
 
     // Store the values in the state
-    setAccount(account.address)
-    setBalance(ethers.formatUnits(balance, 18))
+    dispatch(setAccount(account.address))
+    dispatch(setBalance(ethers.formatUnits(balance, 18)))
   }
 
-  useEffect(() => {
+  useEffect(() =>  {
+  
     if(sdk && metamask) {
-      // Create an event listener to listen for new orders created
+      // Create event listener
       metamask.on("accountsChanged", async (accounts) => {
-        if (accounts.length > 0) {
+        if (accounts.length === 0) {
           // No accounts are connected
           setAccount(null)
           setBalance(0)
@@ -72,7 +83,7 @@ function TopNav() {
         metamask.removeAllListeners()
       }
     }
-  })
+  }, [sdk, metamask])
 
   return(
     <nav className="topnav">
@@ -84,11 +95,11 @@ function TopNav() {
           <select
             name="network"
             id="network"
-            value={config[Number(chainId)] ? chainId : 0}
+            value={config[Number(chainId)] ? chainId: 0}
             onChange={networkHandler}
           >
             <option value="0">Select</option>
-            <option value={"0x7a69"}>Hardhet</option>
+            <option value="0x7a69">Hardhat</option>
           </select>
         </div>
       </div>
@@ -99,23 +110,22 @@ function TopNav() {
             <p>My Balance <span>{Number(balance).toFixed(2)} ETH</span></p>
           </div>
         )}
-
+        
         {account ? (
-          // show account
-          <a href={`https://etherscan.io/address/${account}`}
-             target="_blank"
-             rel="noreferrer"
-             className="link"
+          <a
+            href={`https://etherscan.io/address/${account}`}
+            target="_blank"
+            rel="noreferrer"
+            className="link"  
           >
-            {account.slice(0, 6)}...{account.slice(-4)}
+            {account.slice(0,6) + "..." + account.slice(38, 42)}
             <Jazzicon diameter={44} seed={account} />
           </a>
         ) : (
-          <button onClick={connectHandler} className="button">
+          <button onClick={connectHandler}  className="button">
             Connect
           </button>
         )}
-
       </div>
     </nav>
   );
