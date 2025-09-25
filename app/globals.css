@@ -11,7 +11,7 @@
 
   /*
     The general theme with buttons, links, and sections
-    include a border radius of 38px.
+    include a border radius of 38px. 
   */
   --global-radius: 38px;
   --global-transition: 300ms ease all;
@@ -74,7 +74,7 @@ body {
   color: var(--clr-orange);
 }
 
-/*
+/* 
   The following is used when dynamnically
   hovering over an element. Ex. Canceling
   an open order.
@@ -274,9 +274,9 @@ table tbody tr:nth-of-type(odd) td:last-child {
   border-bottom-right-radius: var(--global-radius);
 }
 
-/*
+/* 
   For some tables we want them to
-  be scrollable. We wrap the tables in
+  be scrollable. We wrap the tables in 
   a div and customize the scrollbar
 */
 
@@ -291,7 +291,7 @@ table tbody tr:nth-of-type(odd) td:last-child {
   height: 6px;
 }
 
-/*
+/* 
   The only table with different layout is
   the tables on the wallet/page. Here we
   want the 3rd <td> to be on the right
@@ -764,8 +764,8 @@ form input[type="submit"]:hover {
 
 /* ------------------------------------------------------ */
 
-/*
-  The following styles are specific to each individual page
+/* 
+  The following styles are specific to each individual page 
 */
 
 /* DEPOSIT & WITHDRAW FORM */
@@ -855,7 +855,7 @@ form input[type="submit"]:hover {
 }
 
 /* ORDERBOOK */
-/*
+/* 
   Since the order book rows are meant to be
   clickable, we make it behave like a button
 */
@@ -885,7 +885,7 @@ form input[type="submit"]:hover {
 
 /* PRICE CHART & STATS */
 
-/*
+/* 
   .insights is used for the price chart and
   other price related data. This section is
   used 2 times in routes / and /swap
@@ -921,7 +921,7 @@ form input[type="submit"]:hover {
   cursor: pointer;
 }
 
-/*
+/* 
   Specific to /swap, we only showcase the price
   chart on larger devices. See media query 992px.
 */
@@ -935,7 +935,7 @@ form input[type="submit"]:hover {
   min-width: 400px;
 }
 
-/*
+/* 
   The following is specific to displaying
   the price chart.
 */
@@ -944,7 +944,7 @@ form input[type="submit"]:hover {
   height: 100%;
 }
 
-/*
+/* 
   We'll only display this select on larger devices.
   See media query 768px.
 */
@@ -953,7 +953,7 @@ form input[type="submit"]:hover {
   display: none;
 }
 
-/*
+/* 
   The following is specfic for apexcharts
 */
 
@@ -1223,9 +1223,9 @@ form input[type="submit"]:hover {
   /* ------------------------------------------------------ */
   /* PAGE */
 
-  /*
-    By default all page sections will
-    span 6 columns in a 12 column grid
+  /* 
+    By default all page sections will 
+    span 6 columns in a 12 column grid 
   */
 
   .page section {
