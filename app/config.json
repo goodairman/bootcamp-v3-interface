@@ -31,5 +31,38 @@
         ]
       }
     ]
+  },
+  "9991": {
+    "exchange": "0xa14C7AD054A5C3fd04c4AeD33226e7183208136B",
+    "tokens": [
+      {
+        "name": "DAPP",
+        "address": "0xD5Fd009A8fFf75866DacCf9f33411Ecb6f55604a"
+      },
+      {
+        "name": "mUSDC",
+        "address": "0xde53f946Ed8782d7546B7072ACA22845aB82Ad03"
+      },
+      {
+        "name": "mLINK",
+        "address": "0x038BCDe62029942bd16acca7fe5cEb08633444D3"
+      }
+    ],
+    "markets": [
+      {
+        "name": "DAPP / mUSDC",
+        "tokens": [
+          "0xD5Fd009A8fFf75866DacCf9f33411Ecb6f55604a",
+          "0xde53f946Ed8782d7546B7072ACA22845aB82Ad03"
+        ]
+      },
+      {
+        "name": "DAPP / mLINK",
+        "tokens": [
+          "0xD5Fd009A8fFf75866DacCf9f33411Ecb6f55604a",
+          "0x038BCDe62029942bd16acca7fe5cEb08633444D3"
+        ]
+      }
+    ]
   }
 }

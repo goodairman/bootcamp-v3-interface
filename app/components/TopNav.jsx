@@ -100,6 +100,7 @@ function TopNav() {
           >
             <option value="0">Select</option>
             <option value="0x7a69">Hardhat</option>
+            <option value="0x2707">Tenderly</option>
           </select>
         </div>
       </div>
